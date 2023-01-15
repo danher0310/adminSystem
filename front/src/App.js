@@ -8,20 +8,26 @@ import Activate from './views/auth/Activate';
 import ResetPassword from './views/auth/ResetPassword';
 import ResetPasswordConfirm from './views/auth/ResetPasswordConfirm';
 
+import { Provider } from 'react-redux';
+import store from './store'; 
+
 function App() {
   return (
-   <Router>
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/singup" element={<Singup />} />
-      <Route path="/activate/:uid/:token" element={<Activate />} />
-      <Route path="/reset-password" element={<ResetPassword />} />
-      <Route path="/password/reset/:uid/:token" element={<ResetPasswordConfirm />} />     
+   <Provider>
+    <Router>
+      <Routes>
+
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/singup" element={<Singup />} />
+        <Route path="/activate/:uid/:token" element={<Activate />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
+        <Route path="/password/reset/:uid/:token" element={<ResetPasswordConfirm />} />  
 
 
-    </Routes>
-   </Router>
+      </Routes>
+    </Router>
+  </Provider>
   );
 }
 
