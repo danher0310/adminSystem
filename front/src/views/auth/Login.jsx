@@ -2,16 +2,20 @@ import React, {useEffect, useState} from 'react'
 import { Container, Button, Form, Row } from 'react-bootstrap';
 import Layout from '../../hocs/Layout';
 import { Link } from 'react-router-dom';
+import { login } from '../../redux/actions/authActions';
+import { useDispatch } from 'react-redux';
 function Login() {
   useEffect(() => {
     document.title = 'Login';
   }, []);
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const dispatch = useDispatch()
 
   const onSubmit = (e)=>{
     e.preventDefault();
-    console.log("funciona")
+    console.log(`${process.env.REACT_APP_API_URL}`)
+    dispatch(login(email, password))
   }
 
   return (

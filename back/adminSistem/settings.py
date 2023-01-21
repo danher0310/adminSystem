@@ -53,9 +53,11 @@ INSTALLED_APPS = [
     'rest_framework',
     'djoser',
     'accounts',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -115,6 +117,11 @@ CSRF_TRUSTED_ORIGINS = [
     'http://127.0.0.1:3000',
     
 ]
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3000',
+    
+]
+CORS_ORIGIN_ALLOW_ALL = True
 
 
 EMAIL_BACKEND = env('EMAIL_BACKEND')
@@ -178,9 +185,11 @@ REST_FRAMEWORK = {
        
     ),
 }
-
+from datetime import timedelta
 SIMPLE_JWT = {
-   'AUTH_HEADER_TYPES': ('JWT',),
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=30),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+    'AUTH_HEADER_TYPES': ('JWT',),
 }
 
 DJOSER={
