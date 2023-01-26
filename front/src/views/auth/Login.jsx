@@ -14,7 +14,7 @@ function Login() {
       // history(redirect)
       history('/')
     }
-  }, [userInfo, redirect]);
+  }, [userInfo, history]);
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const dispatch = useDispatch()
