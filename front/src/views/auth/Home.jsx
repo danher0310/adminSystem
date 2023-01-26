@@ -1,20 +1,27 @@
 import React, {useEffect} from 'react'
-import Layout from '../../hocs/Layout'
-import { Container } from 'react-bootstrap';
 
-function Home() {
+import { Container, Row, Col} from 'react-bootstrap';
+
+const Home = () => {
   useEffect(() => {
     document.title = 'Home';
   }, []);
 
   return (
     <div>
-      <Layout>
+      
         <Container>
-          <h1>Home</h1>
+         <Row>
+            <Col>
+              <div>
+                <h2>Welcome to Admin system</h2>
+                <p> Comming soon for mas details and working in the front </p>
+              </div>
+            </Col>
+         </Row>
         </Container>
       
-      </Layout>
+      
     </div>
   )
 }

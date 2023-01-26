@@ -1,13 +1,20 @@
 import React, {useEffect, useState} from 'react'
 import { Container, Button, Form, Row } from 'react-bootstrap';
-import Layout from '../../hocs/Layout';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { login } from '../../redux/actions/authActions';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+
 function Login() {
+  const userInfo = useSelector(state => state.auth.user)
+  const history = useNavigate()
   useEffect(() => {
     document.title = 'Login';
-  }, []);
+    
+    if(userInfo){
+      // history(redirect)
+      history('/')
+    }
+  }, [userInfo, redirect]);
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const dispatch = useDispatch()
@@ -20,7 +27,7 @@ function Login() {
 
   return (
     <div>
-      <Layout>
+      
         <Container>
           <Row>
             <div className='container mt-5 mb-3'>
@@ -70,7 +77,7 @@ function Login() {
          
                 
         </Container>
-      </Layout>  
+      
     </div>
   )
 }

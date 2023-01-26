@@ -1,5 +1,6 @@
 
 import React from 'react';
+import Layout from './hocs/Layout';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import Home from './views/auth/Home';
 import Login from './views/auth/Login';
@@ -14,19 +15,22 @@ import store from './store';
 function App() {
   return (
    <Provider store={store}>
-    <Router>
-      <Routes>
+    <Layout>
+      
+      <Router>
+        <Routes> 
 
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/singup" element={<Singup />} />
-        <Route path="/activate/:uid/:token" element={<Activate />} />
-        <Route path="/reset-password" element={<ResetPassword />} />
-        <Route path="/password/reset/:uid/:token" element={<ResetPasswordConfirm />} />  
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/singup" element={<Singup />} />
+          <Route path="/activate/:uid/:token" element={<Activate />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
+          <Route path="/password/reset/:uid/:token" element={<ResetPasswordConfirm />} />  
 
 
-      </Routes>
-    </Router>
+        </Routes>
+      </Router>
+    </Layout>
   </Provider>
   );
 }
