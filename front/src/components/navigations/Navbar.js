@@ -1,7 +1,7 @@
 import React from 'react'
 import { Container, Navbar } from 'react-bootstrap';
 
-function NavigationBar() {
+const  NavigationBar = () => {
   return (
     <div>
        <Navbar bg="light">
