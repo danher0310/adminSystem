@@ -5,6 +5,10 @@ import{
   LOAD_USER_FAIL,
   AUTHENTICATED_SUCCESS,
   AUTHENTICATED_FAIL,
+  PASSWORD_RESET_SUCCESS,
+  PASSWORD_RESET_FAIL,
+  PASSWORD_RESET_CONFIRM_SUCCESS,
+  PASSWORD_RESET_CONFIRM_FAIL,
   LOGOUT
 } from '../constants'
 import axios from 'axios';
@@ -109,6 +113,15 @@ export const login =(email, password) => async dispatch =>{
 
 
 };
+
+  export const reset_password = (email) => async dispatch => {
+    const config ={
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
+  };
+
 
 export const logout = () => dispatch =>{
   dispatch({

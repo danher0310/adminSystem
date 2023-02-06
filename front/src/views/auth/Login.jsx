@@ -1,20 +1,21 @@
 import React, {useEffect, useState} from 'react'
 import { Container, Button, Form, Row } from 'react-bootstrap';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { login } from '../../redux/actions/authActions';
 import { useDispatch, useSelector } from 'react-redux';
 
 function Login() {
-  const userInfo = useSelector(state => state.auth.user)
+  const auth = useSelector(state => state.auth)
+  const {isAuthenticated} = auth
   const history = useNavigate()
   useEffect(() => {
     document.title = 'Login';
     
-    if(userInfo){
+    if(isAuthenticated){
       // history(redirect)
       history('/')
     }
-  }, [userInfo, history]);
+  }, [isAuthenticated, history]);
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const dispatch = useDispatch()
