@@ -10,7 +10,6 @@ function  NavigationBar  ({isAuthenticated, user}) {
   const logoutHandler = (e) =>{
     dispatch(logout())
   }
-  console.log(user)
   
   const publicLinks = () => (
     <Fragment>

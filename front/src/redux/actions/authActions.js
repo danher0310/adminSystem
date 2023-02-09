@@ -119,7 +119,47 @@ export const login =(email, password) => async dispatch =>{
       headers: {
         'Content-Type': 'application/json'
       }
+    };
+    const body = JSON.stringify({email});
+    try{
+      const res = await axios.post(`/auth/users/reset_password/`, body, config)
+      dispatch({
+        type: PASSWORD_RESET_SUCCESS, 
+        payload: res.data
+
+      });
+
+    }catch (err){
+      dispatch({
+        type: PASSWORD_RESET_FAIL,
+      });
+
     }
+  };
+  export const reset_password_confirm = (uid, token, new_password, re_new_password) => async dispatch => {
+    const config ={
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
+    const body = JSON.stringify({uid, token, new_password, re_new_password});
+
+    try{
+      const res = await axios.post(`/auth/users/reset_password_confirm/`, body, config)
+      dispatch({
+        type: PASSWORD_RESET_CONFIRM_SUCCESS, 
+        payload: res.data
+
+      });
+
+    }catch (err){
+      dispatch({
+        type: PASSWORD_RESET_CONFIRM_FAIL,
+        
+      });
+
+    };
+
   };
 
 
